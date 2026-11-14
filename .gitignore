@@ -1,6 +1,9 @@
 .env
+.env.*
 *.pdf
 *.pfx
 *.p12
+*.pem
+*.key
 node_modules/
 __pycache__/

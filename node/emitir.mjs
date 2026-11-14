@@ -1,8 +1,13 @@
 // Emite un CFE con la API de NextData (Node.js 18+, sin dependencias).
 // Uso: NEXTDATA_API_KEY=nd_test_... node node/emitir.mjs solicitudes/exportacion-121-servicios.json
 import { readFile, writeFile } from "node:fs/promises";
+import { basename } from "node:path";
 
-const base = process.env.NEXTDATA_API_URL || "https://api.nextdata.uy";
+const base = new URL(process.env.NEXTDATA_API_URL || "https://api.nextdata.uy");
+const local = ["localhost", "127.0.0.1", "[::1]"].includes(base.hostname);
+// La clave nunca viaja sin cifrar: solo https (o tu propia PC para pruebas locales).
+if (base.protocol !== "https:" && !local) throw new Error("NEXTDATA_API_URL tiene que usar https.");
+
 const key = process.env.NEXTDATA_API_KEY;
 if (!key) throw new Error("Definí NEXTDATA_API_KEY (empezá con una clave nd_test_).");
 
@@ -11,8 +16,9 @@ if (!file) throw new Error("Indicá el archivo de la solicitud, por ejemplo soli
 const body = JSON.parse(await readFile(file, "utf8"));
 
 async function api(path, init = {}) {
-  const res = await fetch(base + path, {
+  const res = await fetch(new URL(path, base), {
     ...init,
+    redirect: "error", // una redirección nunca recibe tu clave
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json", ...init.headers },
     signal: AbortSignal.timeout(30000),
   });
@@ -33,8 +39,9 @@ console.log("Emitido · estado:", cfe.status);
 
 // El PDF oficial (firmado, con CAE y QR) viene en la misma respuesta.
 if (cfe.pdfBase64) {
-  const name = cfe.pdfFileName || `CFE_${cfe.outboxId}.pdf`;
-  await writeFile(name, Buffer.from(cfe.pdfBase64, "base64"));
+  // Solo el nombre del archivo: nunca se escribe fuera de la carpeta actual.
+  const name = basename(String(cfe.pdfFileName || `CFE_${cfe.outboxId}.pdf`)).replace(/[^\w.-]/g, "_");
+  await writeFile(name, Buffer.from(cfe.pdfBase64, "base64"), { mode: 0o600 });
   console.log("PDF guardado en", name);
 }
 // "pending" con "dgiSend: queued" es normal: el sobre sale a DGI enseguida. No emitas de nuevo.
