@@ -1,0 +1,13 @@
+{
+  "mode": "manual",
+  "tenantCaeId": "<uuid-del-cae-101>",
+  "tipoCfe": "101",
+  "receptor": { "documento": "", "nombre": "Consumidor final", "receiverCircuit": "e_ticket" },
+  "receptorDocumento": "",
+  "amount": 1220,
+  "currency": "UYU",
+  "idempotencyKey": "ejemplo-101-0001",
+  "lines": [
+    { "descripcion": "Servicio", "cantidad": 1, "precioUnitario": 1000, "ivaAliquota": 22 }
+  ]
+}

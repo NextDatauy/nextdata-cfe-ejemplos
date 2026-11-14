@@ -1,0 +1,29 @@
+{
+  "mode": "manual",
+  "tenantCaeId": "<uuid-del-cae-121>",
+  "tipoCfe": "121",
+  "receptor": {
+    "documento": "12-3456789",
+    "nombre": "Example Software Inc.",
+    "receiverCircuit": "exterior",
+    "pais": "US",
+    "address": "100 Market Street",
+    "city": "San Francisco",
+    "receptorState": "California",
+    "receptorCountryName": "Estados Unidos"
+  },
+  "receptorDocumento": "12-3456789",
+  "amount": 3000,
+  "currency": "USD",
+  "idempotencyKey": "ejemplo-121-servicios-0001",
+  "exportacion": {
+    "clauVenta": "N/A",
+    "modVenta": 90,
+    "viaTransp": 8,
+    "exportType": "EXPORT_SERVICES",
+    "servicesConfirmed": true
+  },
+  "lines": [
+    { "descripcion": "Desarrollo de software (octubre)", "cantidad": 1, "precioUnitario": 3000, "ivaAliquota": 0 }
+  ]
+}

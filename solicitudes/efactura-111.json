@@ -1,0 +1,13 @@
+{
+  "mode": "manual",
+  "tenantCaeId": "<uuid-del-cae-111>",
+  "tipoCfe": "111",
+  "receptor": { "documento": "211234560018", "nombre": "Cliente Ejemplo S.A.", "receiverCircuit": "e_factura" },
+  "receptorDocumento": "211234560018",
+  "amount": 6100,
+  "currency": "UYU",
+  "idempotencyKey": "ejemplo-111-0001",
+  "lines": [
+    { "descripcion": "Consultoría (horas)", "cantidad": 5, "precioUnitario": 1000, "ivaAliquota": 22 }
+  ]
+}

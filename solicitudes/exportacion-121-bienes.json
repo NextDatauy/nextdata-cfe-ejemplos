@@ -1,0 +1,23 @@
+{
+  "mode": "manual",
+  "tenantCaeId": "<uuid-del-cae-121>",
+  "tipoCfe": "121",
+  "receptor": {
+    "documento": "30-12345678-9",
+    "nombre": "Importadora Ejemplo S.A.",
+    "receiverCircuit": "exterior",
+    "pais": "AR",
+    "address": "Av. Corrientes 1234",
+    "city": "Buenos Aires",
+    "receptorState": "CABA",
+    "receptorCountryName": "Argentina"
+  },
+  "receptorDocumento": "30-12345678-9",
+  "amount": 2500,
+  "currency": "USD",
+  "idempotencyKey": "ejemplo-121-bienes-0001",
+  "exportacion": { "clauVenta": "FOB", "modVenta": 1, "viaTransp": 1 },
+  "lines": [
+    { "descripcion": "Lana lavada (kg)", "cantidad": 500, "precioUnitario": 5, "ivaAliquota": 0 }
+  ]
+}

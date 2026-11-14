@@ -1,0 +1,33 @@
+{
+  "mode": "manual",
+  "tenantCaeId": "<uuid-del-cae-122>",
+  "tipoCfe": "122",
+  "receptor": {
+    "documento": "12-3456789",
+    "nombre": "Example Software Inc.",
+    "receiverCircuit": "exterior",
+    "pais": "US",
+    "address": "100 Market Street",
+    "city": "San Francisco",
+    "receptorState": "California",
+    "receptorCountryName": "Estados Unidos"
+  },
+  "receptorDocumento": "12-3456789",
+  "amount": 500,
+  "currency": "USD",
+  "idempotencyKey": "ejemplo-122-0001",
+  "exportacion": { "clauVenta": "N/A", "viaTransp": 8 },
+  "references": [
+    {
+      "source": "INTERNAL",
+      "internalOutboxId": "<outboxId-de-la-121-original>",
+      "tipoDocRef": "121",
+      "serie": "A",
+      "nroCfeRef": 1,
+      "razonRef": "Descuento acordado"
+    }
+  ],
+  "lines": [
+    { "descripcion": "Descuento sobre desarrollo de octubre", "cantidad": 1, "precioUnitario": 500, "ivaAliquota": 0 }
+  ]
+}

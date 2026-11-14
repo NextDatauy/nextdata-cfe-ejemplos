@@ -1,0 +1,6 @@
+.env
+*.pdf
+*.pfx
+*.p12
+node_modules/
+__pycache__/
